@@ -1,7 +1,10 @@
 package com.movies.moviesservice.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "Kinopoisk", url = "https://kinopoiskapiunofficial.tech/api/v2.2/films")
 public interface KinopoiskClient {
@@ -18,28 +21,50 @@ public interface KinopoiskClient {
                      @RequestParam(value = "countries", required = false) Integer countries,
                      @RequestParam(value = "genres", required = false) Integer genres,
                      @RequestParam(value = "order", required = false) String order);
+
     @GetMapping(value = "/{id}")
     String getMovieById(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+
     @GetMapping(value = "/{id}/awards")
     String getAwardsByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+
     @GetMapping(value = "/{id}/videos")
     String getVideosByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+
     @GetMapping(value = "/{id}/similars")
     String getSimilarMovieByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+
     @GetMapping(value = "/{id}/reviews")
-    String getReviewsMovieByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+    String getReviewsMovieByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id,
+                                    @RequestParam(value = "page", required = false) Integer page,
+                                    @RequestParam(value = "order", required = false) String order);
+
     @GetMapping(value = "/{id}/images")
-    String getImagesMovieByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+    String getImagesMovieByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id,
+                                   @RequestParam(value = "page", required = false) Integer page,
+                                   @RequestParam(value = "type", required = false) String type);
+
     @GetMapping(value = "/{id}/seasons")
     String getSeasonsByMovieId(@RequestHeader(value = "X-API-KEY") String key, @PathVariable Integer id);
+
     @GetMapping(value = "/top")
-    String getTopMovies(@RequestHeader(value = "X-API-KEY") String key);
+    String getTopMovies(@RequestHeader(value = "X-API-KEY") String key,
+                        @RequestParam(value = "page", required = false) Integer page,
+                        @RequestParam(value = "type", required = false) String type);
+
     @GetMapping(value = "/premiers")
-    String getPremiersMovies(@RequestHeader(value = "X-API-KEY") String key);
+    String getPremiersMovies(@RequestHeader(value = "X-API-KEY") String key,
+                             @RequestParam(value = "keyword") Integer year,
+                             @RequestParam(value = "page") String month);
+
     @GetMapping(value = "/search-by-keyword")
     String getMoviesByKeyword(@RequestHeader(value = "X-API-KEY") String key,
                               @RequestParam(value = "keyword", required = false) String keyword,
                               @RequestParam(value = "page", required = false) Integer page);
+
     @GetMapping(value = "/releases")
-    String getReleasesMovies(@RequestHeader(value = "X-API-KEY") String key);
+    String getReleasesMovies(@RequestHeader(value = "X-API-KEY") String key,
+                             @RequestParam(value = "year") Integer year,
+                             @RequestParam(value = "month") String month,
+                             @RequestParam(value = "page", required = false) Integer page);
 }

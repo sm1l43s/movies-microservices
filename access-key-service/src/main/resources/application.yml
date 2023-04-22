@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: access-key-service
+
+server:
+  port: 8081
+
+access-key:
+  keys:
+    - d17115de-cb15-4d07-a584-411bfa0697f3
+    - 8267c06f-f61f-4640-b46d-acd09b3e7283
+    - dcd7d5eb-39a5-422c-9f21-3ff5b55b8a2a
+    - 5a1024a3-3b85-42dd-bf55-438755279755
+    - 711c521b-defc-4aea-bf9e-128e33f54d42
+    - a19f4984-207b-4fa5-9dce-12d69f8c3196
+    - b5572085-d58c-4448-b199-06aa1191864f
+    - 5f1c696e-e3c9-4a01-9dcf-d752bffc3531
+    - e56de907-ab31-4a78-b63a-6567d31c6a35
+    - 2b5c9b09-6dc4-4005-b1bf-e3515994f5b0
+    - afd9cb86-7d6d-4094-9c9f-99ddc7cb9a3e
+    - b8173b90-8d48-4d19-8cc0-6e96e7762ff0
+    - c824058a-4941-48e2-867b-4ddd9ffd1365
+    - 07d98d8b-5957-4017-a41c-8d5b9d16a526
+    - 4aee217a-580e-4d0c-b2ec-819dbc5237bd
