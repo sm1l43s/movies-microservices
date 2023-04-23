@@ -1,7 +1,6 @@
 package com.moveis.apigateway.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +11,11 @@ import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
-    @Autowired
-    RouteDefinitionLocator locator;
+    private final RouteDefinitionLocator locator;
+
+    public SwaggerConfig(RouteDefinitionLocator locator) {
+        this.locator = locator;
+    }
 
     @Bean
     public List<GroupedOpenApi> apis() {
