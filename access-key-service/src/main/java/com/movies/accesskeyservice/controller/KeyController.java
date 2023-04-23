@@ -1,6 +1,6 @@
 package com.movies.accesskeyservice.controller;
 
-import com.movies.accesskeyservice.logic.AccessKeyService;
+import com.movies.accesskeyservice.service.AccessKeyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Access Keys", description = "Набор методов для работы с ключами доступа к API Kinopoisk.")
 @RestController
-@RequestMapping("/api/v1/key")
+@RequestMapping("/api/v1/keys")
 @RequiredArgsConstructor
 @Slf4j
 public class KeyController {
