@@ -3,16 +3,14 @@ spring:
     name: access-key-service
 
 server:
-  port: ${APP_PORT:8080}
+  port: ${SERVICE_PORT:0}
 
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.value}
   client:
     service-url:
-      default-zone: https://discovery-service-pifj.onrender.com/
-
-service-variable: 500
+      default-zone: ${DISCOVERY_SERVICE_URL:http://localhost:8716/eureka}
 
 access-key:
   keys:
