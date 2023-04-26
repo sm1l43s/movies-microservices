@@ -5,7 +5,7 @@ FROM maven:3.8.2-jdk-11 AS build
 ADD src src
 ADD pom.xml .
 
-RUN mvn package
+RUN -X mvn package
 #COPY . .
 #RUN mvn clean package -Pprod -DskipTests
 #
