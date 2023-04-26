@@ -62,7 +62,7 @@ logging:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8716/eureka
+      default-zone: ${DISCOVERY_SERVICE_URL:http://localhost:8716/eureka}
 
 springdoc:
   swagger-ui:

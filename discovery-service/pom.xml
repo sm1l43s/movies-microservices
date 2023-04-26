@@ -13,7 +13,7 @@
 
     <groupId>com.movies.discoveryservice</groupId>
     <artifactId>discovery-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>discovery-service</name>
     <description>Discovery Service</description>
 

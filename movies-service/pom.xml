@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.movies</groupId>
 	<artifactId>movies-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>movies-service</name>
 	<description>Movies Service</description>
 	<properties>
