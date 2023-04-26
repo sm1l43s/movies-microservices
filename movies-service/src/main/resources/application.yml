@@ -11,4 +11,4 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
   client:
     service-url:
-      default-zone: ${DISCOVERY_SERVICE_URL:http://localhost:8716/eureka}
+      default-zone: https://discovery-service-pifj.onrender.com/eureka
