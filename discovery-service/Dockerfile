@@ -1,13 +1,10 @@
 #
 # Build stage
 #
-#FROM maven:3.8.2-jdk-11 AS build
-#COPY . .
+FROM maven:3.8.2-jdk-11 AS build
+COPY . .
 #RUN mvn clean package -Pprod -DskipTests
-COPY src /usr/src/app/src
-COPY pom.xml /usr/src/app
-
-RUN mvn -f /usr/src/app/pom.xml clean package
+RUN mvn -f pom.xml clean package
 #
 # Package stage
 #
