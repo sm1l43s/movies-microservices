@@ -1,14 +1,14 @@
 #
 # Build stage
 #
-FROM maven:3.8.2-jdk-11 AS build
+FROM maven:3.8.3-openjdk-17 AS build
 COPY . .
 RUN mvn clean package -Pprod -DskipTests
 
 #
 # Package stage
 #
-FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine-slim
+FROM openjdk:17-alpine
 COPY --from=build /target/movies-service-1.0.jar movies-service.jar
 # ENV PORT=8080
 #EXPOSE 8080
