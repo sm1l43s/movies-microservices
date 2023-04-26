@@ -2,8 +2,11 @@
 # Build stage
 #
 FROM maven:3.8.2-jdk-11 AS build
-COPY ./discovery-service .
-RUN mvn clean package -Pprod -DskipTests
+#COPY . .
+COPY src /discovery-service/src
+COPY pom.xml /discovery-service
+RUN mvn -f /discovery-service/pom.xml clean package
+#RUN mvn clean package -Pprod -DskipTests
 #
 # Package stage
 #
