@@ -10,7 +10,7 @@ eureka:
     instance-id: ${spring.application.name}:${random.value}
   client:
     service-url:
-      default-zone: https://discovery-service-pifj.onrender.com/eureka
+      default-zone:
 
 access-key:
   keys:
