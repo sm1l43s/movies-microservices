@@ -44,6 +44,6 @@ public class AccessKeyService {
     }
 
     private int checkTotalNumberOfRequest() {
-       return IntStream.of(requestCounter).sum();
+        return IntStream.of(requestCounter).sum();
     }
 }
