@@ -11,9 +11,9 @@ spring:
         id: movies-service
         uri: lb://movies-service
         predicates:
-        - Path=/api/v1/films/**
+          - Path=/api/v1/films/**
         filters:
-        - RewritePath=/api/v1/films/(?<path>.*), /$\{path}
+          - RewritePath=/api/v1/films/(?<path>.*), /$\{path}
       ## Movie Service Swagger UI route
       routes[1]:
         id: movies-service-ui
@@ -27,9 +27,9 @@ spring:
         id: access-key-service
         uri: lb://access-key-service
         predicates:
-        - Path=/api/v1/keys/**
+          - Path=/api/v1/keys/**
         filters:
-        - RewritePath=/api/v1/keys/(?<path>.*), /$\{path}
+          - RewritePath=/api/v1/keys/(?<path>.*), /$\{path}
       ## Access Key Service Swagger UI route
       routes[3]:
         id: access-key-service-ui
@@ -41,18 +41,23 @@ spring:
       ## Discover Service route
       routes[4]:
         id: discovery-service
-        uri: ${DISCOVERY_SERVICE_URL}
+        uri: http://localhost:8761
         predicates:
-        - Path= /eureka/web/**
+          - Path= /eureka/web
         filters:
-        - SetPath=/
-      ## Swagger UI route
+          - SetPath=/
       routes[5]:
-          id: openapi
-          uri: http://localhost:${server.port}
-          predicates:
+        id: discovery-service
+        uri: http://localhost:8761
+        predicates:
+          - Path= /eureka/**
+      ## Swagger UI route
+      routes[6]:
+        id: openapi
+        uri: http://localhost:${server.port}
+        predicates:
           - Path=/v3/api-docs/**
-          filters:
+        filters:
           - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
 logging:
