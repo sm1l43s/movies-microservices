@@ -12,8 +12,6 @@ spring:
         uri: lb://movies-service
         predicates:
           - Path=/api/v1/films/**
-        filters:
-          - RewritePath=/api/v1/films/(?<path>.*), /$\{path}
       ## Movie Service Swagger UI route
       routes[1]:
         id: movies-service-ui
@@ -28,8 +26,6 @@ spring:
         uri: lb://access-key-service
         predicates:
           - Path=/api/v1/keys/**
-        filters:
-          - RewritePath=/api/v1/keys/(?<path>.*), /$\{path}
       ## Access Key Service Swagger UI route
       routes[3]:
         id: access-key-service-ui
