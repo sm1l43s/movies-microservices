@@ -6,8 +6,8 @@ spring:
     name: discovery-service
 
 eureka:
-  instance:
-    hostname: https://eureka-discovery-service.onrender.com
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8080}/eureka/

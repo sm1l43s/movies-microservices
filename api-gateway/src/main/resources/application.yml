@@ -41,14 +41,15 @@ spring:
       ## Discover Service route
       routes[4]:
         id: discovery-service
-        uri: http://localhost:8761
+        uri: ${DISCOVERY_SERVICE_URL:http://localhost:8761}
         predicates:
           - Path= /eureka/web
         filters:
           - SetPath=/
+      ## Discovery Service Resources route
       routes[5]:
         id: discovery-service
-        uri: http://localhost:8761
+        uri: ${DISCOVERY_SERVICE_URL:http://localhost:8761}
         predicates:
           - Path= /eureka/**
       ## Swagger UI route
@@ -60,14 +61,13 @@ spring:
         filters:
           - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
 
-logging:
-  level:
-    root: info
-
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
+    registerWithEureka: true
     service-url:
-      default-zone: ${DISCOVERY_SERVICE_URL:http://localhost:8761}/eureka/
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761}/eureka/
 
 springdoc:
   swagger-ui:
