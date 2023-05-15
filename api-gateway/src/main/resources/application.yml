@@ -6,6 +6,17 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      ## Cors configuration
+      globalcors:
+          corsConfigurations:
+            '[/**]':
+              allowedOrigins: "*"
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+                - OPTIONS
       ## Movie Service route
       routes[0]:
         id: movies-service

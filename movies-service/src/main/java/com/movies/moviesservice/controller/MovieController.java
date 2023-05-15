@@ -246,7 +246,7 @@ public class MovieController {
                     }
             )
     })
-    @GetMapping(value = "/premiers")
+    @GetMapping(value = "/premieres")
     String getPremiersMovies(@Parameter(description = "год релиза")
                              @RequestParam(value = "year") Integer year,
                              @Parameter(description = "месяц релиза. Available values : JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER")
