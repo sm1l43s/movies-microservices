@@ -161,7 +161,7 @@ public class MovieController {
                                     @Parameter(description = "номер страницы")
                                     @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
                                     @Parameter(description = "сортировка. Available values : RATING, NUM_VOTE, YEAR")
-                                    @RequestParam(value = "order", required = false, defaultValue = "RATING") String order) {
+                                    @RequestParam(value = "order", required = false, defaultValue = "DATE_DESC") String order) {
         return kinopoiskClient.getReviewsMovieByMovieId(accessKeyClient.getAccessKey(), id, page, order);
     }
 
