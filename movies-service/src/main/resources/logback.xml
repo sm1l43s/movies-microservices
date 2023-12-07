@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <appender name="info" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%(%d{ISO8601}) %highlight(%-5level) [%cyan(%t)] traceId: %yellow(%X{traceId:-}), spanId: %yellow(%X{spanId:-}) %magenta(%C{}): %msg%n%throwable</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/insurance.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>insurance.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%(%d{ISO8601}) %highlight(%-5level) [%cyan(%t)] %magenta(%C{}): %msg%n%throwable</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="info"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <logger name="com.liberty.insurance.aspect.LoggingAspect" level="debug">
+        <appender-ref ref="info"/>
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="org.apache.kafka" level="OFF"/>
+</configuration>
